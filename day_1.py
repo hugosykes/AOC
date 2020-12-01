@@ -1,7 +1,5 @@
 from datetime import datetime
 
-i = 0
-
 
 def solve():
     start_time = datetime.now()
@@ -9,18 +7,22 @@ def solve():
     for line in open("input.txt", "r").readlines():
         numbers.append(int(line))
 
-    def loop_daddy(_n1, num_list):
+    def loop(n1, num_list, minimum):
         for n2 in num_list:
-            for n3 in num_list:
-                if _n1 + n2 + n3 == 2020:
-                    return _n1 * n2 * n3
 
-    for n1 in numbers:
-        looped = loop_daddy(_n1=n1, num_list=numbers)
+            if n2 + minimum > 2020:
+                continue
+
+            for n3 in num_list:
+                if n1 + n2 + n3 == 2020:
+                    return n1 * n2 * n3
+
+    for _n1 in numbers:
+        looped = loop(n1=_n1, num_list=numbers, minimum=min(*numbers))
         if looped:
             return looped, datetime.now() - start_time
         else:
-            numbers.remove(n1)
+            numbers.remove(_n1)
 
 
 if __name__ == '__main__':
