@@ -19,6 +19,8 @@ def solve():
         looped = loop_daddy(_n1=n1, num_list=numbers)
         if looped:
             return looped, datetime.now() - start_time
+        else:
+            numbers.remove(n1)
 
 
 if __name__ == '__main__':
