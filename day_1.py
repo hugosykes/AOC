@@ -4,7 +4,7 @@ from datetime import datetime
 def solve():
     start_time = datetime.now()
     numbers = []
-    for line in open("input.txt", "r").readlines():
+    for line in open("day_1_input.txt", "r").readlines():
         numbers.append(int(line))
 
     def loop(n1, num_list, minimum):
