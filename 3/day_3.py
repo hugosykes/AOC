@@ -1,12 +1,12 @@
 def solve():
     lines = []
     for line in open("input.txt", "r").readlines():
-        big_line = 73 * line.replace("\n", "")
+        big_line = line.replace("\n", "")
         lines.append([big_line[i] for i in range(len(big_line))])
 
     x, y, count_of_trees = 0, 0, 0
     while y < len(lines):
-        if lines[y][x] == '#':
+        if lines[y][x % len(lines[1])] == '#':
             count_of_trees += 1
         x += 3
         y += 1
@@ -16,7 +16,7 @@ def solve():
 def solve_part_2(list_of_slopes):
     lines = []
     for line in open("input.txt", "r").readlines():
-        big_line = 73 * line.replace("\n", "")
+        big_line = line.replace("\n", "")
         lines.append([big_line[i] for i in range(len(big_line))])
 
     count = 1
@@ -24,7 +24,7 @@ def solve_part_2(list_of_slopes):
         x_crement, y_crement = slope
         x, y, count_of_trees = 0, 0, 0
         while y < len(lines):
-            if lines[y][x] == '#':
+            if lines[y][x % len(lines[1])] == '#':
                 count_of_trees += 1
             x += x_crement
             y += y_crement
