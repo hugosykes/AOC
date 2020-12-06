@@ -33,7 +33,8 @@ def solve_part_2():
 
     resolved = [(resolve_column_or_row(line[0], True), resolve_column_or_row(line[1], False)) for line in lines]
     seat_ids = [r[0] * 8 + r[1] for r in resolved]
-    print([_id for _id in list(range(1024)) if _id not in seat_ids])
+    seats_not_taken = [_id for _id in list(range(1024)) if _id not in seat_ids]
+    return [_id for _id in seats_not_taken if _id + 1 not in seats_not_taken and _id - 1 not in seats_not_taken][0]
 
 
 if __name__ == '__main__':
